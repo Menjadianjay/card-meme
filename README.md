@@ -14,6 +14,7 @@ Kartu bermain berbasis aktivitas untuk pembelajaran dan permainan sosial. Berbed
 - [Aturan Tambahan](#aturan-tambahan)
 - [Struktur Data Kartu](#struktur-data-kartu)
 - [Struktur Folder Proyek](#struktur-folder-proyek)
+- [Website Riset Konten](#website-riset-konten)
 - [Referensi Visual](#referensi-visual)
 - [Roadmap](#roadmap)
 
@@ -196,6 +197,64 @@ activity-deck/
 │   └── rulebook.md
 └── README.md
 ```
+
+---
+
+## Website Riset Konten
+
+Untuk mempermudah pengumpulan meme dan kutipan atau percakapan film yang berkaitan dengan aktivitas pada kartu, proyek ini dapat dilengkapi sebuah website internal khusus untuk riset dan kurasi konten, terpisah dari dek kartu itu sendiri.
+
+### Catatan Hak Cipta
+
+Meme dan kutipan dialog film adalah materi berhak cipta. Website ini sebaiknya digunakan sebagai alat riset dan kurasi internal, bukan untuk menampilkan ulang konten secara publik dalam jumlah besar. Kutipan yang akhirnya dipakai pada kartu final sebaiknya diverifikasi ulang secara manual, dan diusahakan dalam bentuk parafrase atau kutipan singkat, bukan salinan penuh dari sumber asli.
+
+### Arsitektur Alur Data
+
+```
+Sumber eksternal (situs meme, basis subtitle, API metadata film)
+            |
+            v
+   Layanan scraper (terjadwal, menghormati robots.txt)
+            |
+            v
+   Database mentah (belum diberi tag aktivitas)
+            |
+            v
+   Mesin pencocokan aktivitas (tagging manual atau dibantu NLP)
+            |
+            v
+   Panel pencarian dan kurasi (tinjau, setujui, tolak konten)
+```
+
+### Komponen
+
+| Komponen | Fungsi | Catatan Teknis |
+|----------|--------|-----------------|
+| Layanan scraper | Mengambil data dari sumber eksternal secara berkala | Python dengan BeautifulSoup atau Scrapy untuk halaman statis, Playwright atau Puppeteer untuk halaman berbasis JavaScript. Dijalankan lewat cron job atau task queue, bukan saat pengguna mengakses website. |
+| Database mentah | Menyimpan hasil scraping sebelum ditinjau | PostgreSQL cukup untuk skala personal project. Elasticsearch atau Meilisearch dapat ditambahkan jika volume data sudah besar dan butuh pencarian teks cepat. |
+| Mesin pencocokan aktivitas | Menghubungkan konten dengan daftar kegiatan pada kartu | Tahap awal menggunakan tagging manual. Otomasi berbasis embedding teks baru relevan setelah jumlah konten mencapai ratusan entri. |
+| Panel pencarian dan kurasi | Antarmuka kerja untuk meninjau, menyetujui, atau menolak konten | Dibangun dengan React atau Next.js, bersifat internal dan tidak untuk diakses publik. |
+
+### Skema Database Awal
+
+```
+raw_content
+- id
+- type (meme / quote)
+- source_url
+- image_path atau text_content
+- film_title (nullable)
+- scraped_at
+- status (pending_review / approved / rejected)
+```
+
+### Langkah Implementasi
+
+1. Menentukan daftar kegiatan dan film terkait secara manual terlebih dahulu, sebagai acuan pencarian.
+2. Membangun scraper untuk satu sumber terlebih dahulu, menguji hasilnya, baru menambah sumber lain.
+3. Menyimpan seluruh hasil scraping ke database dengan status belum ditinjau.
+4. Membangun panel kurasi sederhana untuk meninjau dan menandai kegiatan terkait pada setiap konten.
+5. Konten yang telah disetujui dijadikan referensi produksi kartu, bukan langsung ditampilkan mentah kepada publik.
 
 ---
 
