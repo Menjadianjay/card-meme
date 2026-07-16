@@ -11,6 +11,7 @@ Kartu bermain berbasis aktivitas untuk pembelajaran dan permainan sosial. Berbed
 - [Contoh Tata Letak Kartu](#contoh-tata-letak-kartu)
 - [Mekanisme Film Quiz](#mekanisme-film-quiz)
 - [Alur Permainan](#alur-permainan)
+- [Aturan Tambahan](#aturan-tambahan)
 - [Struktur Data Kartu](#struktur-data-kartu)
 - [Struktur Folder Proyek](#struktur-folder-proyek)
 - [Referensi Visual](#referensi-visual)
@@ -107,6 +108,43 @@ Alur berikut adalah kerangka dasar yang dapat dimodifikasi sesuai kebutuhan proy
    - Jawaban salah memicu Efek Film sebagai hukuman.
 6. Poin pada Nomor Pojok dikumpulkan oleh pemain yang berhasil menjawab dengan benar.
 7. Permainan berlanjut hingga dek habis atau target poin tercapai, dan pemain dengan poin tertinggi dinyatakan sebagai pemenang.
+
+---
+
+## Aturan Tambahan
+
+Aturan berikut disusun untuk menutup celah yang biasanya muncul saat rancangan awal diuji coba di meja permainan sebenarnya.
+
+### Verifikasi Jawaban
+
+- Setiap kartu memiliki jawaban Film Quiz tercetak di bagian belakang kartu atau di kartu jawaban terpisah, tidak hanya diingat oleh pemain yang memegang kartu.
+- Pemain lain yang sedang tidak menjawab bertugas sebagai pengecek jawaban dengan melihat bagian belakang kartu, sehingga verifikasi tidak bergantung pada satu orang yang harus menghafal seluruh jawaban.
+- Jika terjadi perdebatan mengenai jawaban, keputusan pemain yang memegang kartu jawaban bersifat final untuk ronde tersebut.
+
+### Batasan Efek Film
+
+- Secara default, Efek Film berlaku untuk satu pertanyaan berikutnya saja, bukan hingga permainan selesai. Opsi hukuman berkelanjutan hanya berlaku sebagai house rule jika disepakati seluruh pemain sejak awal.
+- Dek menyertakan dua hingga tiga kartu Ampun. Pemain yang terkena Efek Film boleh membuang satu kartu Ampun untuk membatalkan hukuman tersebut.
+- Efek Film dibatasi pada gaya bicara atau akting singkat dan tidak boleh berupa hukuman fisik atau hal yang bersifat memalukan secara personal di luar tema karakter film.
+
+### Standar Kesulitan Film Quiz
+
+- Setiap kartu memiliki label tingkat kesulitan, yaitu mudah, sedang, atau sulit, yang ditentukan pada tahap produksi.
+- Komposisi dek disarankan proporsional, misalnya 40 persen mudah, 40 persen sedang, dan 20 persen sulit, agar tidak timpang secara keseluruhan.
+- Jika suatu kegiatan tidak memiliki film yang relevan, kartu tersebut menggunakan Power khusus bernama Bebas Kuis, yaitu kartu tetap memiliki poin namun tanpa Film Quiz.
+
+### Segmentasi Usia dan Audiens
+
+- Dek disusun dalam dua varian sejak tahap produksi, yaitu Deck Umum yang berisi kegiatan sehari-hari dengan film keluarga atau animasi, dan Deck Dewasa yang berisi kegiatan lebih variatif dengan film lintas genre.
+- Kedua varian ditandai dengan warna sampul berbeda agar tidak tertukar saat digabungkan dalam satu kelompok bermain.
+- Aturan permainan tetap sama pada kedua varian, hanya konten gambar kegiatan dan pilihan film yang disesuaikan dengan target usia.
+
+### Aturan Tambahan Lain untuk Playtesting
+
+- Pemain dilarang mencari jawaban melalui internet atau ponsel selama kuis berlangsung. Pelanggaran mengakibatkan kehilangan giliran berikutnya.
+- Jika terjadi kesamaan poin di akhir permainan, pemenang ditentukan melalui satu ronde tambahan menggunakan kartu tersisa di dek.
+- Permainan membutuhkan minimal tiga pemain, karena mekanisme tebak-menebak memerlukan pihak netral untuk verifikasi.
+- Setiap tebakan gambar maupun jawaban Film Quiz memiliki batas waktu, disarankan lima belas hingga dua puluh detik, agar permainan tetap berjalan dinamis.
 
 ---
 
